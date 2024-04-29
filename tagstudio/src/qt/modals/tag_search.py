@@ -24,6 +24,7 @@ logging.basicConfig(format="%(message)s", level=logging.INFO)
 class TagSearchPanel(PanelWidget):
 	tag_chosen = Signal(int)
 	def __init__(self, library):
+		print("####################################### TEST 0")
 		super().__init__()
 		self.lib: Library = library
 		# self.callback = callback
@@ -76,7 +77,8 @@ class TagSearchPanel(PanelWidget):
 	# 	self.search_field.setFocus()
 	
 	def on_return(self, text:str):
-		if text and self.first_tag_id is not None:
+		print("####################################### TEST 1")
+		if text and self.first_tag_id >= 0:
 			# callback(self.first_tag_id)
 			self.tag_chosen.emit(self.first_tag_id)
 			self.search_field.setText('')
@@ -86,6 +88,7 @@ class TagSearchPanel(PanelWidget):
 			self.parentWidget().hide()
 
 	def update_tags(self, query:str):
+		print("####################################### TEST 2")
 		# for c in self.scroll_layout.children():
 		# 	c.widget().deleteLater()
 		while self.scroll_layout.count():
