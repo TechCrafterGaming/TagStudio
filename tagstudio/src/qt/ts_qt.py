@@ -249,7 +249,9 @@ class QtDriver(QObject):
 
 		file_menu.addSeparator()
 
-		file_menu.addAction(QAction('&Close Library', menu_bar))
+		close_library_action = QAction('&Close Library', menu_bar)
+		close_library_action.triggered.connect(lambda: self.close_library())
+		file_menu.addAction(close_library_action)
 
 		# Edit Menu ============================================================
 		new_tag_action = QAction('New &Tag', menu_bar)
